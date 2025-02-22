@@ -1,11 +1,16 @@
 #include <iostream>
 
 #include "Filed.h"
+#include "Figure.cpp"
 
 int main(){
     char again = 'y';
     int row = 0;
     int col = 0;
+    bool game = true;
+    Figure f;
+    X x;
+    O o;
     Field field(width, height);
     while(again == 'y' || again == 'Y'){
         while(game){
@@ -13,16 +18,16 @@ int main(){
             std::cin >> row;
             std::cout << "Choose col for your move: ";
             std::cin >> col;
-            //check place for move
-            
-            //make move
 
-            //print field
+            if(field.isFree(row, col)){
+                field.move(row, col, user);
+            }
 
-            //check winner
-            
-            //make our move
+            field.print();
 
+            if(field.isFree(row, col)){
+                field.move(row, col, computer);
+            }
         }
         field.clear();
 
